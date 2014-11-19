@@ -2,8 +2,8 @@ clear
 
 %% Locate numbers positions in both learning image and image to be tested
 % Load learning image 
-learningimage = imread('app.tif');
-image = imread('test.tif');
+learningimage = imread('../data/app.tif');
+image = imread('../data/test.tif');
 
 % Seek lines
 lineslearning = seeklines(learningimage);
