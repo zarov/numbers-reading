@@ -1,3 +1,11 @@
+# Matlab
 *~
 *.mat
 
+# Latex
+*.toc
+*.log
+*.aux
+*.pyg
+*.synctex.gz
+*.out
