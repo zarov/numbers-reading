@@ -1,0 +1,37 @@
+\chapter{Classifieur 2 : Densités et K plus proches voisins}
+Liste des fonctions mentionnées dans ce chapitre : getdensity, computepdensities, learningclassifier2, decisionclassifier2
+
+\section{Principe et implémentation}
+
+Ce second classifieur vise à identifier un chiffre à partir des densités de pixels noirs obtenues dans les différentes zones qui le compose. La première étape consiste à diviser le rectangle encadrant le chiffre à identifier en m x n zones, puis de calculer la densité de pixels noirs dans chacune de ces zones.\\
+
+Comme précédemment, le classifieur nécessite de passer par une phase d'apprentissage afin d'obtenir une base de densités de référence. Il est ensuite possible d'identifier le chiffre en comparant les densités obtenues avec les densités de référence. Les probabilités d'appartenance du chiffre à chacune des classes est finalement calculée en fonction du nombre de représentants de chaque classe parmis ses k plus proches voisins.
+
+\subsection{Fonctions utilisées}
+
+getdensity( rectangle, m, n ) : density
+Entrées :
+Calcule la densité de pixels noirs dans chaque zone de l'image. Les zones sont obtenues par division du rectangle contenant le chiffre en m parties sur la hauteur et n parties sur la largeur. Les densités sont calculées en divisant le nombre de pixels noirs décomptés par la hauteur x la largeur du rectangle.
+Cette fonction retourne un vecteur de m x n composantes contenant les densités normalisées relatives à chaque zone.
+
+computepdensities( vectordensity, vectordensitylearning, nbrectangleslearning, k ) : pbelonging
+Entrées : 
+Calcule la différence entre le vecteur de densités du chiffre à identifier et les vecteur de densités de chaque élément contenu dans la base d'apprentissage respectivement.
+
+
+
+\subsection{Phase d'apprentissage}
+
+learningclassifier2( rectangleslearning, learningimag, m, n) : vectordensitylearning
+
+
+\subsection{Phase de décision}
+
+decisionclassifier2( rectangles, image, vectordensitylearning, m, n, k) : pbelonging
+
+
+\section{Analyse et conclusion}
+
+\subsection{Résultats obtenus en fonction des paramètres m et n}
+
+\subsection{Influence du paramètre k}
