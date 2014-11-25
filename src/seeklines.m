@@ -8,8 +8,7 @@ function [ steps ] = seeklines( image )
 
     % Sum of each black pixel on every line
     projH = sum(image < 50, 2);
-    % plot(projH);
-
+    
     % Steps
     steps = zeros(0, 0);
     step = zeros(1, 2);

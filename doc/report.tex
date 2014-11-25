@@ -12,12 +12,12 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{color,colortbl}
-\usepackage{phdthesis}	% Much beautiful
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{hyphenat}	% Caesura
 \usepackage{hyperref}	% Simple Link
 \usepackage[]{algorithm2e} % Algorithm
+\usepackage{amsmath}
 \usepackage{amssymb}
 
 % Code Coloring with minted, use it as follow :
@@ -54,14 +54,19 @@
 % INTRODUCTION
 
 % LOCALISATION DES CHIFFRES MANUSCRITS
+\input{localisation.tex}
+\newpage
 
 % CLASSIFIEUR 1 : PROFILS + DISTANCE EUCLIDIENNE MINIMUM
+\input{classifier1.tex}
+\newpage
 
 % CLASSIFIEUR 2 : DENSITES + KPPV
 \input{classifier2.tex}
+\newpage
 
 % COMBINAISON DE CLASSIFIEURS
-\input{combination.tex}
+%\input{combination.tex}
 
 % CONCLUSION
 

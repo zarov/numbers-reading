@@ -1,0 +1,26 @@
+\section{Classifieur 1 : profils et classifieur par distance euclidienne minimum}
+
+\subsection{Extraction des profils}
+Chaque chiffre récupéré précédemment, il est désormais possible d'extraire les profils gauche et droit pour chacun, sur $d$ composantes. Ainsi, pour chaque chiffre, on utilise l'algorithme suivant :
+
+\begin{figure}[h]
+\begin{algorithm}[H]
+	découper en 5 lignes avec $linspace$
+	
+	\For{chaque ligne}{
+		\While{pixel\_gauche != noir}{
+			profil gauche = pixel\_gauche + 1
+		}	
+		\While{pixel\_droit != noir}{
+			profil droit = pixel\_droit - 1
+		}
+	}
+	normaliser le profil obtenu
+\end{algorithm}
+\end{figure}
+
+Enfin, on récupère tous ces profils et on les classe en fonction du chiffre auquel ils appartiennent, pour ensuite effectuer la moyenne des profils d'un même chiffre.
+
+\subsection{Apprentissage du classifieur}
+
+\subsection{Décision du classifieur}
