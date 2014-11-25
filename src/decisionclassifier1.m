@@ -3,9 +3,9 @@ function [ pbelonging ] = decisionclassifier1( rectangles, image, vectordistance
 %   Detailed explanation goes here
 
     nbrectangles = size(rectangles);
-    vectordistance = zeros(nbrectangles, 2*d);
+    vectordistance = zeros(nbrectangles(1), 2*d);
 
-    pbelonging = zeros(nbrectangles, 10);
+    pbelonging = zeros(nbrectangles(1), 10);
     for i=1:nbrectangles
         % Extract profiles of the image to be tested
         top = rectangles(i, 1) + 1;

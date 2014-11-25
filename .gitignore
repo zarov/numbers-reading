@@ -1,6 +1,7 @@
 # Matlab
 *~
 *.mat
+*.asv
 
 # Latex
 *.toc

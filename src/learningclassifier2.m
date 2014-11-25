@@ -3,7 +3,7 @@ function [vectordensitylearning] = learningclassifier2( rectangleslearning, lear
 %   Detailed explanation goes here
     
     nbrectangleslearning = size(rectangleslearning);
-    vectordensitylearning = zeros(nbrectangleslearning, m*n);
+    vectordensitylearning = zeros(nbrectangleslearning(1), m*n);
     
     % Compute density of black pixels in each one of the m*n area for each 
     % element of the ten classes

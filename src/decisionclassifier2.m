@@ -4,8 +4,8 @@ function [ pbelonging ] = decisionclassifier2( rectangles, image, vectordensityl
 
     nbrectangles = size(rectangles);
     [nbrectangleslearning, ~] = size(vectordensitylearning);
-    vectordensity = zeros(nbrectangles, m*n);
-    pbelonging = zeros(nbrectangles, 10);
+    vectordensity = zeros(nbrectangles(1), m*n);
+    pbelonging = zeros(nbrectangles(1), 10);
 
     for i=1:nbrectangles
         % Compute the density of black pixels in each of the m*n area for 

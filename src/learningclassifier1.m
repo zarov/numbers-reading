@@ -3,7 +3,7 @@ function [vectordistancelearning] = learningclassifier1( rectangleslearning, lea
 %   Detailed explanation goes here
 
     nbrectangleslearning = size(rectangleslearning);
-    vectortempdistancelearning = zeros(nbrectangleslearning, 2*d);
+    vectortempdistancelearning = zeros(nbrectangleslearning(1), 2*d);
 
     % Extract left and right profiles from each element of the ten classes
     for i=1:nbrectangleslearning
