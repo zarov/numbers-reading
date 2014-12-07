@@ -11,7 +11,7 @@ function [vectordistancelearning] = learningclassifier1( rectangleslearning, lea
         bottoml = rectangleslearning(i, 3) - 1;
         leftl = rectangleslearning(i, 2) + 1;
         rightl = rectangleslearning(i, 4) - 1;
-        vectortempdistancelearning(i, 1:2*d) = extractprofile(learningimage(topl:bottoml, leftl:rightl));
+        vectortempdistancelearning(i, 1:2*d) = extractprofile(learningimage(topl:bottoml, leftl:rightl), d);
     end
 
     % Compute the d*2 mean vectors (left and right) for each class

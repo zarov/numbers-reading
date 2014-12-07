@@ -12,7 +12,7 @@ function [ pbelonging ] = computepdistances( centerslearning, vectordistance)
                     sum(abs(centerslearning(9, 1:10) - vectordistance));
                     sum(abs(centerslearning(10, 1:10) - vectordistance))];
      for i = 1:10
-         pbelonging(i) = exp(-1*distances(i))/sum(distances);         
+         pbelonging(i) = exp(-1*distances(i))/sum(exp(-1*distances));         
      end
 end
 

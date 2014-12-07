@@ -65,5 +65,5 @@ resultprod = m2;
 
 %% Analysis of results function of parameters d, m, n, and k
 
-computerecognitionrate(resultsum);
-computerecognitionrate(resultprod);
+computerecognitionrate(resultsum)
+computerecognitionrate(resultprod)

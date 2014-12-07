@@ -1,13 +1,13 @@
-function [ profile ] = extractprofile( base )
+function [ profile ] = extractprofile( base, d )
     w = size(base, 2);
     h = size(base, 1);
     
     % Compute the 5 lines to analyze, according to height
-    hstep = linspace(1, h, 5);
-    profile = zeros(10, 1);
+    hstep = linspace(1, h, d);
+    profile = zeros(2*d, 1);
 
     % For each line, find left and right
-    for j=1:5
+    for j=1:d
         line = floor(hstep(j));
 
         % Left and right departure
@@ -26,6 +26,6 @@ function [ profile ] = extractprofile( base )
 
         % Normalize the profile
         profile(j, 1) = (l / 2) / w;
-        profile(j + 5, 1) = (r / 2) / w;
+        profile(j + d, 1) = (r / 2) / w;
     end
 end

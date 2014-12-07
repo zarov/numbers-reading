@@ -1,26 +1,47 @@
 \section{Classifieur 1 : profils et classifieur par distance euclidienne minimum}
 
-\subsection{Extraction des profils}
-Chaque chiffre récupéré précédemment, il est désormais possible d'extraire les profils gauche et droit pour chacun, sur $d$ composantes. Ainsi, pour chaque chiffre, on utilise l'algorithme suivant :
+Listes des fonctions mentionnées dans cette section : \textit{extractprofile}, \textit{computepdistances}, \textit{learningclassifier1}, \textit{decisionclassifier1}.
 
-\begin{figure}[h]
-\begin{algorithm}[H]
-	découper en 5 lignes avec $linspace$
-	
-	\For{chaque ligne}{
-		\While{pixel\_gauche != noir}{
-			profil gauche = pixel\_gauche + 1
-		}	
-		\While{pixel\_droit != noir}{
-			profil droit = pixel\_droit - 1
-		}
-	}
-	normaliser le profil obtenu
-\end{algorithm}
-\end{figure}
+\subsection{Principe et implémentation}
 
-Enfin, on récupère tous ces profils et on les classe en fonction du chiffre auquel ils appartiennent, pour ensuite effectuer la moyenne des profils d'un même chiffre.
+Ce premier classifieur vise à déterminer un chiffre en fonction de ses profils gauche et droit. La première étape consiste à extraire ces profils du chiffre, puis de décider de la nature de la classe de ces profils, grâce à la distance euclidienne minimum.
 
-\subsection{Apprentissage du classifieur}
+Pour pouvoir effectuer un classement des profils, il est nécessaire de passer par une phase d'apprentissage, afin d'obtenir une base de profils de référence. Il est alors possible de comparer les profils de référence et ceux récupérés sur le chiffre souhaitant être lu.
 
-\subsection{Décision du classifieur}
+\subsubsection{Fonctions utilisées}
+
+\textit{extractprofile( base, d ) : profile}\\
+\begin{itemize}
+	\item[\textbf{Entrées :}] \textbf{base} est l'image du rectangle contenant le chiffre à lire, grâce au pré-traitement effectué. \textbf{d} est le nombre de composantes d'un profil
+	\item[\textbf{Sortie :}] \textbf{profile} est le vecteur contenant les deux profils (gauche et droit), de dimension $d\times2$
+\end{itemize}
+Pour un chiffre donné, on découpe dans celui-ci $d$ lignes équidistantes les unes des autres, sur lesquelles les profils vont être lus. Pour chaque ligne, son profil gauche ainsi que son droit sont alors relevés. Le profil est alors normalisé, pour qu'il n'y ait aucune incohérence entre chaque chiffre et la base de référence.\\
+
+\textit{computepdistances( centerslearning, vectordistance ) : pbelonging}\\
+\begin{itemize}
+	\item[\textbf{Entrées : }] \textbf{conterslearning} contient les centres d'une classe, obtenus lors de la phase d'apprentissage. \textbf{vectordistance} contient les centres de la classe à tester.
+	\item[\textbf{Sortie :}] \textbf{pbelonging} contient les probabilités d'appartenance de la classe à tester dans la classe d'apprentissage
+\end{itemize}
+Il s'agit ici de calculer la probabilité pour une classe précise, suivant la formule suivante :
+$$p(\omega_i/x) = \frac{exp(-d(x,\omega_i)}{\sum_{j=0}^9 exp(-d(x, \omega_j))}$$
+
+\subsubsection{Phase d'apprentissage}
+
+\textit{learningclassifier1( rectangleslearning, learningimage, d ) : vectordistancelearning}\\
+\begin{itemize}
+	\item[\textbf{Entrées :}] \textbf{rectangleslearning} correspond aux rectangles déterminés précédemment permettant d'isoler chaque chiffre sur l'image d'apprentissage. \textbf{learningimage} est l'image d'apprentissage, et \textbf{d} le nombre de composantes pour un profil
+	\item[\textbf{Sortie :}] \textbf{vectordistancelearning} contient l'ensemble des centres des profils pour chaque chiffre
+\end{itemize}
+Grâce à \textit{extractprofile}, un profil est déterminé pour chaque chiffre. Les vecteurs déterminant les profils récupérés, la moyenne des centres pour chaque classe est calculé, à l'aide de \textit{mean}. Ces résultats sont sauvegardés pour faire office de base de référence. 
+
+\subsubsection{Phase de décision}
+
+\textit{decisionclassifier1( rectangles, image, vectordistancelearning, d ) : pbelonging}\\
+\begin{itemize}
+	\item[\textbf{Entrées :}] \textbf{rectangles} correspond aux rectangles déterminés précédemment permettant d'isoler chaque chiffre sur l'image à lire. \textbf{image} est l'image à lire. \textbf{vectordistancelearning} est la base de référence déterminée dans la phase d'apprentissage. \textbf{d} est le nombre de composantes pour un profil
+	\item[\textbf{Sortie :}] \textbf{pbelonging} contient les probabilités d'appartenance de chaque chiffre par rapport à l'ensemble des classes d'apprentissage
+\end{itemize}
+Le fonctionnement est semblable à la phase d'apprentissage. Il y a d'abord une extraction du profil pour chaque chiffre, puis la probabilité d'appartenance à chaque classe en fonction de ses centres est calculée grâce à \textit{computepdistances}.
+
+\subsection{Analyse et conclusion}
+
