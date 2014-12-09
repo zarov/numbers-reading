@@ -15,7 +15,7 @@ function [vectordensitylearning] = learningclassifier2( rectangleslearning, lear
         vectordensitylearning(i, 1:n*m) = getdensity(learningimage(topl:bottoml, leftl:rightl), m, n);
     end
     
-    save(['vectordensitylearning_' num2str(m) '_' num2str(n) '.mat'], 'vectordensitylearning', '-ascii');
+    %save(['vectordensitylearning_' num2str(m) '_' num2str(n) '.mat'], 'vectordensitylearning', '-ascii');
     
 end
 

@@ -1,10 +1,10 @@
-function [ pbelonging ] = computepdensities( vectordensity, vectordensitylearning, nbrectangleslearning, k )
+function [ pbelonging ] = computepdensities( vectordensity, vectordensitylearning, nbrectangleslearning, k, mn)
 
     distancetoneighboors = zeros(nbrectangleslearning, 2);
     % Compute distances between every objects of the learning basis and the
     % class to be tested
     for i = 1:nbrectangleslearning
-        distancetoneighboors(i, 1) = sum(abs(vectordensity - vectordensitylearning(i, 1:25)));
+        distancetoneighboors(i, 1) = sum(abs(vectordensity - vectordensitylearning(i, 1:mn)));
         distancetoneighboors(i, 2) = ceil(i/20); % class of belonging = i 
                                                  % divided by the number of
                                                  % models for this class in

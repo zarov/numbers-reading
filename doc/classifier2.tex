@@ -10,14 +10,18 @@ Comme précédemment, le classifieur nécessite de passer par une phase d'appren
 \subsubsection{Fonctions utilisées}
 
 \textit{getdensity( rectangle, m, n ) : density}\\
-Entrées :\\
-Calcule la densité de pixels noirs dans chaque zone de l'image. Les zones sont obtenues par division du rectangle contenant le chiffre en m parties sur la hauteur et n parties sur la largeur. Les densités sont calculées en divisant le nombre de pixels noirs décomptés par la hauteur x la largeur du rectangle.\\
-Cette fonction retourne un vecteur de m x n composantes contenant les densités normalisées relatives à chaque zone.
+\begin{itemize}
+	\item[\textbf{Entrées :}] \textbf{base} correspond aux coordonnées du rectangle contenant le chiffre à lire, obetnues grâce au pré-traitement. \textbf{m} est le nombre de zones qui découple le rectange sur la hauteur. \textbf{n} est le nombre de zones qui découpe le rectangle dur la largeur.
+	\item[\textbf{Sortie :}] \textbf{density} est le vecteur contenant les densités normalisées relatives à chaque zone, de dimension $m\timesn$
+\end{itemize}
+Calcule la densité de pixels noirs dans chaque zone de l'image. Les zones sont obtenues par division du rectangle contenant le chiffre en m parties sur la hauteur et n parties sur la largeur. Les densités sont calculées en divisant le nombre de pixels noirs décomptés par la hauteur $\times$ la largeur du rectangle.\\
 
 \textit{computepdensities( vectordensity, vectordensitylearning, nbrectangleslearning, k ) : pbelonging}\\
-Entrées :\\
+\begin{itemize}
+	\item[\textbf{Entrées :}] \textbf{base} correspond aux coordonnées du rectangle contenant le chiffre à lire, obetnues grâce au pré-traitement. \textbf{m} est le nombre de zones qui découple le rectange sur la hauteur. \textbf{n} est le nombre de zones qui découpe le rectangle dur la largeur.
+	\item[\textbf{Sortie :}] \textbf{density} est le vecteur contenant les densités normalisées relatives à chaque zone, de dimension $m\timesn$
+\end{itemize}
 Calcule la différence entre le vecteur de densités du chiffre à identifier et les vecteur de densités de chaque élément contenu dans la base d'apprentissage respectivement.
-
 
 
 \subsubsection{Phase d'apprentissage}

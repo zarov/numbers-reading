@@ -18,7 +18,7 @@ function [ pbelonging ] = decisionclassifier2( rectangles, image, vectordensityl
 
         % Compute probabilities of rectangle i belonging to each of the ten
         % classes thanks to KPPV
-        pbelonging(i, 1:10) = computepdensities(vectordensity(i, 1:n*m), vectordensitylearning, nbrectangleslearning, k);
+        pbelonging(i, 1:10) = computepdensities(vectordensity(i, 1:n*m), vectordensitylearning, nbrectangleslearning, k, n*m);
     end
 
 end

@@ -17,10 +17,10 @@ function [vectordistancelearning] = learningclassifier1( rectangleslearning, lea
     % Compute the d*2 mean vectors (left and right) for each class
     vectordistancelearning = zeros(10, 10);
     for i=1:10
-        vectordistancelearning(i, 1:10) = mean(vectortempdistancelearning(i*20 - 19:i*20, 1:10));
+        vectordistancelearning(i, 1:2*d) = mean(vectortempdistancelearning(i*20 - 19:i*20, 1:2*d));
     end
 
-    save(['vectordistancelearning_' num2str(d) '.mat'], 'vectordistancelearning', '-ascii');
+    %save(['vectordistancelearning_' num2str(d) '.mat'], 'vectordistancelearning', '-ascii');
 
 end
 

@@ -1,4 +1,4 @@
-clear
+function [result] = numberrecognition(d, k, m, n)
 
 %% Locate numbers positions in both learning image and image to be tested
 % Load learning image 
@@ -23,12 +23,8 @@ rectangles = seekrectangle(image, lines, columns);
 save('coordinatesrectangleslearning.mat', 'rectangleslearning', '-ascii');
 save('coordinatesrectangles.mat', 'rectangles', '-ascii');
 
-nbrectangleslearning = size(rectangleslearning, 1);
-nbrectangles = size(rectangles, 1);
-
-
 %% Classifier #1 : profile + minimal Euclidean distance
-d = 5;
+%d = 5;
 
 % Learning Phase
 vectordistancelearning = learningclassifier1( rectangleslearning, learningimage, d);
@@ -38,9 +34,9 @@ pbelonging1 = decisionclassifier1( rectangles, image, vectordistancelearning, d)
 
 
 %% Classifier #2 : density + KPPV
-m = 5;
-n = 5;
-k = 1;
+%m = 5;
+%n = 5;
+%k = 1;
 
 % Learning phase
 vectordensitylearning = learningclassifier2( rectangleslearning, learningimage, m, n);
@@ -51,19 +47,27 @@ pbelonging2 = decisionclassifier2( rectangles, image, vectordensitylearning, m, 
 
 %% Combination of the two obtained decisions
 
+[~, m] = max(pbelonging1, [], 2);
+resultcl1 = m;
+[~, m] = max(pbelonging2, [], 2);
+resultcl2 = m;
+
 % Combination by sum of probabilities
 pbelongingsum = pbelonging1 + pbelonging2;
+
 % Combination by product of probabilities
 pbelongingprod = pbelonging1 .* pbelonging2;
 
 % Show obtained result for each combination
-[~, m1] = max(pbelongingsum, [], 2);
-resultsum = m1;
+[~, m] = max(pbelongingsum, [], 2);
+resultsum = m;
 
-[~, m2] = max(pbelongingprod, [], 2);
-resultprod = m2;
+[~, m] = max(pbelongingprod, [], 2);
+resultprod = m;
 
-%% Analysis of results function of parameters d, m, n, and k
+%% Return all of the four results rates
 
-computerecognitionrate(resultsum)
-computerecognitionrate(resultprod)
+result = [computerecognitionrate(resultcl1);
+          computerecognitionrate(resultcl2);
+          computerecognitionrate(resultsum);
+          computerecognitionrate(resultprod)];
