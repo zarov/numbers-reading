@@ -1,6 +1,7 @@
 function [  ] = drawrectangle( image, rectangles )
 % DRAWRECTANGLE Draw surrounding rectangles in a image of numbers
 
+    figure('name','Localisation des chiffres')
     % Open the image
     imshow(image);
     hold on;

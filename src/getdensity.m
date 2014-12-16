@@ -1,4 +1,7 @@
 function [ density ] = getdensity( rectangle, m, n)
+% GETDENSITY Compute densities of marked pixel in a rectangle using zoning method
+%   DENSITY = GETDENSITY(RECTANGLE, M, N)
+
     h = size(rectangle, 1);
     w = size(rectangle, 2);
    
@@ -14,7 +17,7 @@ function [ density ] = getdensity( rectangle, m, n)
             for l = floor(hstep(j)) : floor(hstep(j+1)) -1
                 for c = floor(wstep(i)) : floor(wstep(i+1)) -1
                     if rectangle(l, c) == 0
-                        density(i + (j-1)*m) = density(i + (j-1)*m) + 1;
+                        density(j + (i-1)*m) = density(j + (i-1)*m) + 1;
                     end
                 end
             end

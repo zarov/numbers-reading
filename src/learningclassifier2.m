@@ -1,6 +1,7 @@
 function [vectordensitylearning] = learningclassifier2( rectangleslearning, learningimage, m, n )
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
+%LEARNINGCLASSIFIER2 Learning phase for classifier 2
+%   VECTORDENSITYLEARNING =
+%   LEARNINGCLASSIFIER2(RECTANGLESLEARNING, LEARNINGIMAGE, M, N)
     
     nbrectangleslearning = size(rectangleslearning);
     vectordensitylearning = zeros(nbrectangleslearning(1), m*n);

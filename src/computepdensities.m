@@ -1,4 +1,8 @@
 function [ pbelonging ] = computepdensities( vectordensity, vectordensitylearning, nbrectangleslearning, k, mn)
+% COMPUTEPDENSITIES Compute probabilities of belonging according to
+% densities
+%    PBELONGING = COMPUTEPDENSITIES(VECTORDENSITY,
+%    VECTORDENSITYLEARNING, NBRECTANGLESLEARNING, K, MN)
 
     distancetoneighboors = zeros(nbrectangleslearning, 2);
     % Compute distances between every objects of the learning basis and the

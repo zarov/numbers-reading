@@ -1,10 +1,13 @@
 function [result] = numberrecognition(d, k, m, n)
+% NUMBERRECOGNITION Identify handwritten numbers in an image
+%   RESULT = NUMBERRECOGNITION(D, K, M, N)
 
-%% Locate numbers positions in both learning image and image to be tested
+
 % Load learning image 
 learningimage = imread('../data/app.tif');
 image = imread('../data/test.tif');
 
+%% Locate numbers positions in both learning image and image to be tested
 % Seek lines
 lineslearning = seeklines(learningimage);
 lines = seeklines(image);
@@ -16,12 +19,12 @@ columns = seekcolumns(image, lines);
 % Seek and draw rectangles
 rectangleslearning = seekrectangle(learningimage, lineslearning, columnslearning);
 rectangles = seekrectangle(image, lines, columns);
-%drawrectangle(learningimage, rectangleslearning);
-%drawrectangle(image, rectangles);
+drawrectangle(learningimage, rectangleslearning);
+drawrectangle(image, rectangles);
 
 % Save results
-save('coordinatesrectangleslearning.mat', 'rectangleslearning', '-ascii');
-save('coordinatesrectangles.mat', 'rectangles', '-ascii');
+%save('coordinatesrectangleslearning.mat', 'rectangleslearning', '-ascii');
+%save('coordinatesrectangles.mat', 'rectangles', '-ascii');
 
 %% Classifier #1 : profile + minimal Euclidean distance
 %d = 5;
@@ -51,6 +54,9 @@ pbelonging2 = decisionclassifier2( rectangles, image, vectordensitylearning, m, 
 resultcl1 = m;
 [~, m] = max(pbelonging2, [], 2);
 resultcl2 = m;
+
+pbelonging1;
+pbelonging2;
 
 % Combination by sum of probabilities
 pbelongingsum = pbelonging1 + pbelonging2;
