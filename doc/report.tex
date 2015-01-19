@@ -44,6 +44,11 @@
 %-------------------------------------------------------------------------------
 
 % INTRODUCTION
+\section*{Introduction}
+L'objectif de ce TP est de réaliser un système complet de reconnaissance de chiffres manuscrits. Chaque chiffre sera d'abord isolé du reste, pour ensuite être analysé et classé par deux systèmes de classifications différentes. Ces classifieurs permettront d'obtenir une probabilité quant à la nature exacte du chiffre, et ces probabilités seront donc assemblées pour obtenir un résultat final.\\
+Pour obtenir une probabilité, le système effectuera d'abord une séquence d'apprentissage, qui lui permettra d'avoir une base de données de comparaison.
+
+Le schéma suivant donne un déroulement simple des différentes étapes permettant d'atteindre le résultat final.
 
 % LOCALISATION DES CHIFFRES MANUSCRITS
 \input{localisation.tex}
@@ -58,8 +63,13 @@
 \newpage
 
 % COMBINAISON DE CLASSIFIEURS
-%\input{combination.tex}
+\input{combination.tex}
 
 % CONCLUSION
+\section*{Conclusion}
+
+Les probabilités obtenues en fin de processus sont très correctes : 91\% de reconnaissance en optimisant les paramètres et combinant les classifieurs.\\
+Cependant, de meilleurs résultats pourraient être obtenus en agrandissant la base d'apprentissage : en effet, nous avons vu que la méthode des k plus proches voisins n'est pas utilisée à hauteur de son potentiel étant donné que les meilleurs résultats sont obtenus en considérant seulement le voisin le plus proche. Les probabilités obtenues sont donc très contrastées ce qui limite l'action de la combinaison des classifieurs.\\
+D'autre part, il semble que les chiffres de la base d'apprentissage ainsi que ceux à analyser aient été rédigés par une même personne, ce qui limite la différence de forme entre les chiffres. Pour obtenir des résultats significatifs, il faudrait idéalement varier les styles d'écriture dans la base d'apprentissage, ce qui réduirait le taux de reconnaissance mais améliorerait les performances réelles du système.
 
 \end{document}

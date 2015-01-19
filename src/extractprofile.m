@@ -1,4 +1,6 @@
 function [ profile ] = extractprofile( base, d )
+% EXTRACTPROFILE Extract the profile of a number
+%    PROFILE = EXTRACTPROFILE(BASE, D)
     w = size(base, 2);
     h = size(base, 1);
     

@@ -44,4 +44,46 @@ Grâce à \textit{extractprofile}, un profil est déterminé pour chaque chiffre
 Le fonctionnement est semblable à la phase d'apprentissage. Il y a d'abord une extraction du profil pour chaque chiffre, puis la probabilité d'appartenance à chaque classe en fonction de ses centres est calculée grâce à \textit{computepdistances}.
 
 \subsection{Analyse et conclusion}
+\subsubsection{Evaluation des performances}
+La figure~\ref{fig:proba1} indique la probabilité, pour chaque chiffre lu, d'appartenir à telle classe de chiffre. De gauche à droite, les classes vont de 0 à 9. Une probabilité élevée indique une plus forte chance pour un chiffre de se trouver dans cette classe.
 
+\begin{figure}[hm]
+	\begin{center}
+		\includegraphics[width=\textwidth]{img/20-pbelonging1.png}
+	\end{center}
+	\caption{Probabilité de classe pour chaque chiffre}
+	\label{fig:proba1}
+\end{figure}
+
+On peut remarquer que le classifieur repère des tendances dans les chiffres analysés. Si l'on prend par exemple la classe 0, un pic se forme là où il y a bien des 0 sur l'échantillon à analyser (figure~\ref{fig:proba102}, gauche). Cependant, sur certains chiffres, comme la classe 2 (figure~\ref{fig:proba102}, droite), il est difficile d'obtenir un résultat convenable partout. Ici, l'analyse des chiffres 8 (entre 80 et 90) amène à penser qu'il peut s'agir de la classe 2, car les probabilités sont aussi hautes que lorsqu'il s'agissait de la classe 2 elle-même.
+
+\begin{figure}[hm]
+	\begin{center}
+		\includegraphics[width=\textwidth]{img/21-pbelonging1-more.png}
+	\end{center}
+	\caption{Probabilité pour les classes 0 et 2}
+	\label{fig:proba102}
+\end{figure}
+
+Cette méthode aide donc à obtenir un premier classement, mais n'est pas tout le temps précise. Elle nécessite l'apport d'un classifieur supplémentaire.
+
+\subsubsection{Variation de la valeur $d$}
+Le paramètre qu'il est possible de varier ici est $d$, qui correspond à la taille du vecteur contenant les profils gauches et droits d'un chiffre. Ainsi, pour une valeur plus élevée de $d$, environ 10 ou plus, ce premier classifieur permet d'obtenir des résultats à 80\% satisfaisants. Par contre, des valeurs moins importantes que 5 ne permettent pas d'avoir un classifieur correct, puisque le taux de confiance se situe en-dessous de 60\%.
+
+\begin{figure}[hm]
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{img/22-influence-d.png}
+	\end{center}
+	\caption{Influence de $d$}
+	\label{fig:probad}
+\end{figure}
+
+Il est donc raisonnable de posséder un nombre de mesure par profil au delà d'un seuil, à savoir ici 10 ou plus. La figure~\ref{fig:proba1d} fournit des résultats plus contrastés que ceux relevés dans la figure~\ref{fig:proba1}, pour $d = 15$. Pour certains chiffres, il y a même une certitude de quasiment 100\% qu'il s'agit de ceux-ci.
+
+\begin{figure}[hm]
+	\begin{center}
+		\includegraphics[width=\textwidth]{img/23-pbelonging1-influence-d.png}
+	\end{center}
+	\caption{Probabilité de classe pour $d = 15$}
+	\label{fig:proba1d}
+\end{figure}

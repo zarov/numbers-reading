@@ -1,6 +1,7 @@
 function [vectordistancelearning] = learningclassifier1( rectangleslearning, learningimage, d )
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%LEARNINGCLASSIFIER1 Learning phase for classifier 1
+%   VECTORDISTANCELEARNING =
+%   LEARNINGCLASSIFIER1(RECTANGLESLEARNING, LEARNINGIMAGE, D)
 
     nbrectangleslearning = size(rectangleslearning);
     vectortempdistancelearning = zeros(nbrectangleslearning(1), 2*d);

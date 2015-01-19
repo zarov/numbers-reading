@@ -1,5 +1,8 @@
 function [ pbelonging ] = computepdistances( centerslearning, vectordistance, d)
- 
+ % COMPUTEPDISTANCES Compute probabilities of belonging according to
+% distances
+%    PBELONGING = COMPUTEPDISTANCES(CENTERSLEARNING,
+%    VECTORDISTANCE, D)
     pbelonging = zeros(10, 1);
     distances = [   sum(abs(centerslearning(1, 1:2*d) - vectordistance));
                     sum(abs(centerslearning(2, 1:2*d) - vectordistance));

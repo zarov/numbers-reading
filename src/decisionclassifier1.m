@@ -1,6 +1,7 @@
 function [ pbelonging ] = decisionclassifier1( rectangles, image, vectordistancelearning, d )
-%UNTITLED5 Summary of this function goes here
-%   Detailed explanation goes here
+% DECISIONCLASSIFIER1 Decision phase for classifier 1
+%   PBELONGING = DECISIONCLASSIFIER1(RECTANGLES, IMAGE,
+%   VECTORDISTANCELEARNING, D)
 
     nbrectangles = size(rectangles);
     vectordistance = zeros(nbrectangles(1), 2*d);
